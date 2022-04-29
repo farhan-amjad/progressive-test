@@ -6,12 +6,19 @@ webPush.setVapidDetails(
     process.env.WEB_PUSH_PRIVATE_KEY
 )
 
+const params = {
+    title: 'Test title',
+    message: 'Test message',
+    //  icon: '/icon/noti.png',
+    //  badge:"/icon/badge.png",
+    tag: 'message-tag'
+}
 export default (req, res) => {
     if (req.method == 'POST') {
         const { subscription } = req.body
-
+        console.log("subscription:", subscription)
         webPush
-            .sendNotification(subscription, JSON.stringify({ title: 'Hello Web Push', message: 'Your web push notification is here!' }))
+            .sendNotification(subscription, JSON.stringify(params))
             .then(response => {
                 res.writeHead(response.statusCode, response.headers).end(response.body)
             })

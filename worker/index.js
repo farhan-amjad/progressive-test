@@ -1,13 +1,27 @@
 'use strict'
 
+// self.addEventListener('push', function (event) {
+//   const data = JSON.parse(event.data.text())
+//   event.waitUntil(
+//     registration.showNotification(data.title, {
+//       body: data.message,
+//       icon: '/icon/icon-192.png'
+//     })
+//   )
+// })
+
 self.addEventListener('push', function (event) {
-  const data = JSON.parse(event.data.text())
-  event.waitUntil(
-    registration.showNotification(data.title, {
-      body: data.message,
-      icon: '/icon/icon-192.png'
-    })
-  )
+  const data = event.data.json();
+  let title = data.title
+  let message = data.message
+
+  const notify = self.registration.showNotification(title, {
+    body: message,
+    icon: '/icon/noti.png',
+    badge:  "/icon/badge.png"
+    
+  })
+  event.waitUntil(notify)
 })
 
 self.addEventListener('notificationclick', function (event) {
