@@ -2,6 +2,13 @@
     "name": "Progressive App",
     "short_name": "PWA",
     "icons": [
+        {
+            
+            "src":"https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
       {
         "src": "/icon/icon-192.png",
         "sizes": "192x192",
